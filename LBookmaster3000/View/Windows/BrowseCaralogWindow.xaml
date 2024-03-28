@@ -1,0 +1,146 @@
+﻿<Window x:Class="LBookmaster3000.View.Windows.BrowseCaralogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LBookmaster3000.View.Windows"
+        mc:Ignorable="d"
+        Title="Bookmaster3000" Height="900" Width="1600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="1*"/>
+
+        </Grid.ColumnDefinitions>
+        <!-- Menu -->
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="File"
+                      FontSize="25">
+                <MenuItem Header="Login"/>
+                <MenuItem Header="Logout"/>
+                <MenuItem Header="Close"/>
+            </MenuItem>
+            <MenuItem Header="Library"
+                      FontSize="25">
+                <MenuItem Header="Manage Customers"/>
+                <MenuItem Header="Circulation"/>
+                <MenuItem Header="Reports"/>
+            </MenuItem>
+        </Menu>
+        
+        <!-- Панель поиска -->
+        <Grid Grid.Row="1" 
+              Grid.RowSpan="2"
+              Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Resources/Images/logo.png" 
+                   Grid.ColumnSpan="3"
+                   Grid.Row="0" Margin="0,0,-285,0"/>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Title">
+            </TextBlock>
+
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Text="Author">
+            </TextBlock>
+
+            <TextBox Grid.Row="1"
+                     Grid.Column="3"
+                     Margin="30,0,-250,0" BorderBrush="Black">
+            </TextBox>
+
+            <TextBox Grid.Row="3"
+                     Grid.Column="3"
+                     Margin="30,0,-250,0" BorderBrush="Black">
+            </TextBox>
+
+            <Button Grid.Column="3" 
+                    Grid.Row="5"
+                    Margin="30,0,-250,0" BorderBrush="Black">
+            <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Icons/photo_5402499883031714253_m.jpg"
+                        Stretch="Uniform" Width="16" Height="16" Margin="5" />
+                        <TextBlock Text="Search" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+        
+        <!-- Результаты поиска-->
+        <Grid Grid.Row="1" 
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <ListView></ListView>
+
+            <Grid Grid.Row="1" Margin="10, 3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="Page">
+                </TextBlock>
+
+                <Button Grid.Column="2"
+                        Content="&lt;">
+                </Button>
+
+                <TextBox Grid.Column="4"
+                         Text="1"
+                         HorizontalContentAlignment="Center">
+                </TextBox>
+
+                <Button Grid.Column="6"
+                        Content="&gt;">
+                </Button>
+
+                <TextBlock Grid.Column="8" Text="of 4">
+                </TextBlock>
+
+                <TextBlock Grid.Column="11"
+                           Text ="153 Books found">
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
