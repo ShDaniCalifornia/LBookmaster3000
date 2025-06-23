@@ -14,11 +14,20 @@ namespace LBookmaster3000.Models
     
     public partial class Book
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Book()
+        {
+            this.Bookauthor = new HashSet<Bookauthor>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public System.DateTime FirstPublish { get; set; }
         public string Decription { get; set; }
         public string Cover { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bookauthor> Bookauthor { get; set; }
     }
 }

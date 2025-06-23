@@ -6,5 +6,7 @@
         <!-- set + TAB -->
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <!-- Перенос строки -->
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 </ResourceDictionary>

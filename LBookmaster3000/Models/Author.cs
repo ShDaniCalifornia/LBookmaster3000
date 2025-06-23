@@ -14,6 +14,12 @@ namespace LBookmaster3000.Models
     
     public partial class Author
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Author()
+        {
+            this.Bookauthor = new HashSet<Bookauthor>();
+        }
+    
         public int Id { get; set; }
         public string Lastname { get; set; }
         public string Firstname { get; set; }
@@ -22,5 +28,8 @@ namespace LBookmaster3000.Models
         public System.DateTime BirthDate { get; set; }
         public Nullable<System.DateTime> DeathDate { get; set; }
         public string Wikipedia { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bookauthor> Bookauthor { get; set; }
     }
 }

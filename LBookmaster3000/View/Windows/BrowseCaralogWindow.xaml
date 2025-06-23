@@ -5,35 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LBookmaster3000.View.Windows"
         mc:Ignorable="d"
+        MinHeight="720" MinWidth="1080"
         Title="Bookmaster3000" Height="900" Width="1600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
             <ColumnDefinition Width="1*"/>
 
         </Grid.ColumnDefinitions>
+
         <!-- Menu -->
         <Menu Grid.ColumnSpan="2">
             <MenuItem Header="File"
                       FontSize="25">
-                <MenuItem Header="Login"/>
-                <MenuItem Header="Logout"/>
-                <MenuItem Header="Close"/>
+                <MenuItem Name="LoginMi" Header="Login" Click="LoginMi_Click"/>
+                <MenuItem Name="LogoutMi" Header="Logout" Click="LogoutMi_Click"/>
+                <MenuItem Name="CLoseMi" Header="Close" Click="CLoseMi_Click"/>
             </MenuItem>
-            <MenuItem Header="Library"
+            <MenuItem Name="LibraryMi" Header="Library"
                       FontSize="25">
-                <MenuItem Header="Manage Customers"/>
-                <MenuItem Header="Circulation"/>
-                <MenuItem Header="Reports"/>
+                <MenuItem Name="ManageCustomersMi" Header="Manage Customers" Click="ManageCustomersMi_Click"/>
+                <MenuItem Name="CirculationMi" Header="Circulation" Click="CirculationMi_Click"/>
+                <MenuItem Name="ReportsMi" Header="Reports" Click="ReportsMi_Click"/>
             </MenuItem>
         </Menu>
-        
+
         <!-- Панель поиска -->
         <Grid Grid.Row="1" 
               Grid.RowSpan="2"
@@ -64,25 +65,19 @@
             </TextBlock>
 
 
-            <TextBlock Grid.Row="3"
-                       Grid.Column="0"
-                       Text="Author">
-            </TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Author"/>
 
-            <TextBox Grid.Row="1"
-                     Grid.Column="3"
-                     Margin="30,0,-250,0" BorderBrush="Black">
-            </TextBox>
+            <TextBox Name="TitleTb" Grid.Row="1" Grid.Column="3" 
+                     Margin="30,0,-250,0" BorderBrush="Black" TextChanged="TitleTb_TextChanged"/>
 
-            <TextBox Grid.Row="3"
-                     Grid.Column="3"
-                     Margin="30,0,-250,0" BorderBrush="Black">
-            </TextBox>
+            <TextBox Name="AuthorTb"  Grid.Row="3" Grid.Column="3"
+                         Margin="30,0,-250,0" BorderBrush="Black"/>
 
-            <Button Grid.Column="3" 
+            <Button Name ="SearchBtn" Click="SearchBtn_Click"
+                    Grid.Column="3" 
                     Grid.Row="5"
                     Margin="30,0,-250,0" BorderBrush="Black">
-            <Button.Content>
+                <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Icons/photo_5402499883031714253_m.jpg"
                         Stretch="Uniform" Width="16" Height="16" Margin="5" />
@@ -91,55 +86,148 @@
                 </Button.Content>
             </Button>
         </Grid>
-        
-        <!-- Результаты поиска-->
-        <Grid Grid.Row="1" 
-              Grid.Column="1">
+
+        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <ListView></ListView>
+            <!-- Результаты поиска -->
+            <Grid Grid.Row="0" 
+              Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1" Margin="10, 3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+                <ListView Name="BookAuthorsLv"
+                      SelectionChanged="BookAuthorsLv_SelectionChanged">
+                    <!-- Переводим ListView в табличный вид-->
+                    <ListView.View>
+                        <GridView>
+                            <!-- Создаем столбцы -->
+                            <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Book.Title}"/>
+                            <GridViewColumn Header="Authors">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <!-- Коллекция привязок -->
+                                                <MultiBinding StringFormat="{} {0} {1} {2}">
+                                                    <Binding Path="Author.Lastname"/>
+                                                    <Binding Path="Author.Firstname"/>
+                                                    <Binding Path="Author.Middlename"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-                <TextBlock Grid.Column="0"
+                <Grid Grid.Row="1" Margin="10, 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
                            Text="Page">
-                </TextBlock>
+                    </TextBlock>
 
-                <Button Grid.Column="2"
+                    <Button Grid.Column="2"
                         Content="&lt;">
-                </Button>
+                    </Button>
 
-                <TextBox Grid.Column="4"
+                    <TextBox Grid.Column="4"
                          Text="1"
                          HorizontalContentAlignment="Center">
-                </TextBox>
+                    </TextBox>
 
-                <Button Grid.Column="6"
+                    <Button Grid.Column="6"
                         Content="&gt;">
-                </Button>
+                    </Button>
 
-                <TextBlock Grid.Column="8" Text="of 4">
-                </TextBlock>
+                    <TextBlock Grid.Column="8" Text="of 4">
+                    </TextBlock>
 
-                <TextBlock Grid.Column="11"
-                           Text ="153 Books found">
-                </TextBlock>
+                    <TextBlock Name="CountOfBooksTbl" Grid.Column="10"
+                           Text ="{Binding Count, StringFormat={}{0} books found}">
+                    </TextBlock>
+                </Grid>
+            </Grid>
+
+            <!-- Разделитель -->
+            <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+            <!-- Информация о книге -->
+            <Grid Name="BookDetailsGrid" Grid.Row="3"
+                  Grid.Column="1"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="367*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding Book.Title}" FontSize="30" Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2">
+                        <Hyperlink Name="AuthorHl"
+                                   Click="AuthorHl_Click"> 
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <!-- Коллекция привязок -->
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Author.Lastname"/>
+                                        <Binding Path="Author.Firstname"/>
+                                        <Binding Path="Author.Middlename"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                        </TextBlock>
+                    </Hyperlink>    
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="4" Text="{Binding Book.FirstPublish.Year, 
+                       StringFormat=first publisher: {0}}" Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="6" Text="Decription" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+
+                    <TextBlock Grid.Row="6" Text="{Binding Book.Decription}" Grid.ColumnSpan="2" Margin="0,46,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+
+                <Image Grid.Column="1" Source="{Binding Book.Cover}" />
+
             </Grid>
         </Grid>
     </Grid>

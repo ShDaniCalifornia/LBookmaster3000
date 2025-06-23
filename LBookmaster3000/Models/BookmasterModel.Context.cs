@@ -13,10 +13,10 @@ namespace LBookmaster3000.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BookmasterEntitites : DbContext
+    public partial class BookMasterEntities : DbContext
     {
-        public BookmasterEntitites()
-            : base("name=BookmasterEntitites")
+        public BookMasterEntities()
+            : base("name=BookMasterEntities")
         {
         }
     
@@ -28,5 +28,6 @@ namespace LBookmaster3000.Models
         public virtual DbSet<Author> Author { get; set; }
         public virtual DbSet<Book> Book { get; set; }
         public virtual DbSet<Bookauthor> Bookauthor { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
     }
 }

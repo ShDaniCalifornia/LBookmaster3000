@@ -12,13 +12,14 @@ namespace LBookmaster3000.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bookauthor
+    public partial class Customer
     {
-        public int id { get; set; }
-        public int bookid { get; set; }
-        public int authorid { get; set; }
-    
-        public virtual Author Author { get; set; }
-        public virtual Book Book { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public int Zip { get; set; }
+        public string City { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }

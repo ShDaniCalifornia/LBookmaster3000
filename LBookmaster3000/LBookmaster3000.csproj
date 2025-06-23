@@ -88,8 +88,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookmasterModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AddEditCustomerWindow.xaml.cs">
+      <DependentUpon>AddEditCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\BookAuthorsDetailsWindow.xaml.cs">
+      <DependentUpon>BookAuthorsDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BrowseCaralogWindow.xaml.cs">
       <DependentUpon>BrowseCaralogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Circulation.xaml.cs">
+      <DependentUpon>Circulation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ManageCustomers.xaml.cs">
+      <DependentUpon>ManageCustomers.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,9 +133,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Windows\AddEditCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\BookAuthorsDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\BrowseCaralogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Circulation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ManageCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -163,19 +201,22 @@
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\00afaec5-f5be-4e6c-abc0-b4dee66f6d14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\BookmasterModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BookmasterModel.Context.cs</LastGenOutput>
       <DependentUpon>BookmasterModel.edmx</DependentUpon>
+      <LastGenOutput>BookmasterModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\BookmasterModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookmasterModel.edmx</DependentUpon>
       <LastGenOutput>BookmasterModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

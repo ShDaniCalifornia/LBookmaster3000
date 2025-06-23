@@ -7,4 +7,12 @@
         <Setter Property="BorderBrush" Value="Black" />
         <Setter Property="BorderThickness" Value="3" />
     </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="3" />
+    </Style>
 </ResourceDictionary>
