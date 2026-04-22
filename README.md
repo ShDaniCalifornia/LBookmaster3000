@@ -1,9 +1,8 @@
 # Bookmaster 📚
-> Задание с чемпионата 🤘 :shipit: 🎸
-Это программный продукт состоит из каталога, который может использоваться клиентами и персоналом для поиска книг в библиотеке. Другая часть используется для отслеживания абонемента (получени и возврат книг).
+> Assignment from the Championship. This software product consists of a catalog that can be used by clients and staff to search for books in the library. The other part is used to track the subscription (receipt and return of books).
 [Microsoft C#](https://learn.microsoft.com/ru-ru/dotnet/csharp/). 🐼
 
-### Используемые технологии
+### Technologies used
 + SQL Server
 + Intity Framework
 + WPF
